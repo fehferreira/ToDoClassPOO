@@ -6,20 +6,20 @@ public class Task {
 
     private static int contador;
 
-    private int idTodo;
+    private int idTask;
     private String description;
     private boolean isDone;
     private LocalDate deadLine;
 
     public Task(String description, LocalDate deadLine){
-        this.idTodo = Task.contador + 1;
+        this.idTask = Task.contador + 1;
         this.description = description;
         this.isDone = false;
         this.deadLine = deadLine;
     }
 
-    public int getIdTodo() {
-        return idTodo;
+    public int getIdTask() {
+        return idTask;
     }
 
     public String getDescription() {
@@ -32,5 +32,13 @@ public class Task {
 
     public LocalDate getDeadLine() {
         return deadLine;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setDeadLine(LocalDate deadLine) {
+        this.deadLine = deadLine;
     }
 }
