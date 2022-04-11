@@ -31,15 +31,24 @@ public class TaskController {
         return filteredList.get(0);
     }
 
-    public void updateTask(String updateDescription, LocalDate updateDeadLine, int id){
-        Task oldTask = this.findTask(id);
+    public Task updateTask(String updateDescription, LocalDate updateDeadLine, int id){
+        Task task = this.findTask(id);
         if(!updateDescription.isEmpty() && updateDescription != null){
-            oldTask.setDescription(updateDescription);
+            task.setDescription(updateDescription);
         }
 
         if(updateDeadLine != null){
-            oldTask.setDeadLine(updateDeadLine);
+            task.setDeadLine(updateDeadLine);
         }
+
+        int indexOldTask = this.list.indexOf(task);
+        this.list.add(indexOldTask, task);
+        return task;
+    }
+
+    public void deleteTask(int id){
+        Task task = this.findTask(id);
+        this.list.remove(task);
     }
 
 }
