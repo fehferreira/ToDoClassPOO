@@ -41,4 +41,14 @@ public class Task {
     public void setDeadLine(LocalDate deadLine) {
         this.deadLine = deadLine;
     }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "idTask=" + idTask +
+                ", description='" + description + '\'' +
+                ", isDone=" + isDone +
+                ", deadLine=" + deadLine +
+                '}';
+    }
 }
