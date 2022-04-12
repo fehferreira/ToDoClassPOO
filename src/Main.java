@@ -2,6 +2,7 @@ import controller.TaskController;
 import model.Task;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -29,10 +30,10 @@ public class Main {
                     Main.createTask(scanner);
                     break;
                 case 2:
-                    System.out.println("2. Listar as tarefas");
+                    Main.listTask(scanner);
                     break;
                 case 3:
-                    System.out.println("3. Procurar uma tarefa");
+                    Main.findTask(scanner);
                     break;
                 case 4:
                     System.out.println("4. Editar uma tarefa");
@@ -56,4 +57,17 @@ public class Main {
         Task newTask = Main.controller.createTask(description, LocalDate.parse(limitDate));
         System.out.println(newTask);
     }
+
+    private static void listTask(Scanner scanner){
+        List<Task> list = Main.controller.listTask();
+        list.forEach(task -> System.out.println(task));
+    }
+
+    private static void findTask(Scanner scanner){
+        System.out.println("====       Insira o ID da tarefa:        ====");
+        int id = scanner.nextInt();
+        Task task = Main.controller.findTask(id);
+        System.out.println(task);
+    }
+
 }

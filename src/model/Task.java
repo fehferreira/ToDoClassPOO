@@ -12,7 +12,8 @@ public class Task {
     private LocalDate deadLine;
 
     public Task(String description, LocalDate deadLine){
-        this.idTask = Task.contador + 1;
+        Task.contador++;
+        this.idTask = Task.contador;
         this.description = description;
         this.isDone = false;
         this.deadLine = deadLine;

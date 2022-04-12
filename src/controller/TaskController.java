@@ -23,6 +23,7 @@ public class TaskController {
         return this.list;
     }
 
+    /* Método com a responsabilidade de achar a Task desejada */
     public Task findTask(int id) {
         List<Task> filteredList =
                 this.list.stream()
@@ -31,6 +32,7 @@ public class TaskController {
         return filteredList.get(0);
     }
 
+    /* Método com a responsabilidade de atualização de uma Task*/
     public Task updateTask(String updateDescription, LocalDate updateDeadLine, int id){
         Task task = this.findTask(id);
         if(!updateDescription.isEmpty() && updateDescription != null){
@@ -46,6 +48,7 @@ public class TaskController {
         return task;
     }
 
+    /* Métodocom a responsabilidade de deletar uma Task */
     public void deleteTask(int id){
         Task task = this.findTask(id);
         this.list.remove(task);
