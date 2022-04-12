@@ -33,25 +33,28 @@ public class TaskController {
     }
 
     /* Método com a responsabilidade de atualização de uma Task*/
-    public Task updateTask(String updateDescription, LocalDate updateDeadLine, int id){
+    public Task updateTask(String updateDescription, String updateDeadLine, int id) {
         Task task = this.findTask(id);
-        if(!updateDescription.isEmpty() && updateDescription != null){
+        if (!updateDescription.isEmpty() && updateDescription != null) {
             task.setDescription(updateDescription);
         }
 
-        if(updateDeadLine != null){
-            task.setDeadLine(updateDeadLine);
+        if (!updateDeadLine.isEmpty() && updateDeadLine != null) {
+            task.setDeadLine(LocalDate.parse(updateDeadLine));
         }
-
-        int indexOldTask = this.list.indexOf(task);
-        this.list.add(indexOldTask, task);
         return task;
     }
 
-    /* Métodocom a responsabilidade de deletar uma Task */
-    public void deleteTask(int id){
+    /* Método com a responsabilidade de deletar uma Task */
+    public void deleteTask(int id) {
         Task task = this.findTask(id);
         this.list.remove(task);
     }
 
+    /* Método com a repsonsabilidade de setar a flag de Done */
+    public Task doneTask(int id) {
+        Task task = this.findTask(id);
+        task.doneTask();
+        return task;
+    }
 }

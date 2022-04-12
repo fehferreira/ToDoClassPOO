@@ -43,6 +43,10 @@ public class Task {
         this.deadLine = deadLine;
     }
 
+    public void doneTask(){
+        this.isDone = true;
+    }
+
     @Override
     public String toString() {
         return "Task{" +

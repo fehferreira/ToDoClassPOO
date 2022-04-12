@@ -36,13 +36,13 @@ public class Main {
                     Main.findTask(scanner);
                     break;
                 case 4:
-                    System.out.println("4. Editar uma tarefa");
+                    Main.updateTask(scanner);
                     break;
                 case 5:
-                    System.out.println("5. Concluir uma tarefa");
+                    Main.doneTask(scanner);
                     break;
                 case 6:
-                    System.out.println("6. Deletar uma tarefa");
+                    Main.deleteTask(scanner);
                     break;
             }
         }
@@ -68,6 +68,32 @@ public class Main {
         int id = scanner.nextInt();
         Task task = Main.controller.findTask(id);
         System.out.println(task);
+    }
+
+    private static void updateTask(Scanner scanner){
+        System.out.println("====       Insira o ID da tarefa:        ====");
+        int updateId = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("====    Insira a descrição da tarefa:    ====");
+        String description = scanner.nextLine();
+        System.out.println("====   Insira a data limite(AAAA-MM-DD): ====");
+        String limitDate = scanner.next();
+        Task updateTask = Main.controller.updateTask(description, limitDate, updateId);
+        System.out.println(updateTask);
+    }
+
+    private static void doneTask(Scanner scanner){
+        System.out.println("====       Insira o ID da tarefa:        ====");
+        int id = scanner.nextInt();
+        Main.controller.doneTask(id);
+        System.out.println("====         Tarefa Finalizada!!         ====");
+    }
+
+    private static void deleteTask(Scanner scanner){
+        System.out.println("====       Insira o ID da tarefa:        ====");
+        int id = scanner.nextInt();
+        Main.controller.deleteTask(id);
+        System.out.println("====          Tarefa Deletada!!          ====");
     }
 
 }
